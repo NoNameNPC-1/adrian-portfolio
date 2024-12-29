@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrián Rodríguez Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DotGothic16&display=swap" rel="stylesheet">
+
+
+    <style>
+
+        /* CSS */
+        body {
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            background-color: #161616;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #fff;
+        }
+
+        /*video de fondo*/
+        video {
+            position: fixed; /* Fija el video en el fondo */
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Escala el video para cubrir toda el área */
+            z-index: -1; /* Coloca el video detrás del contenido */
+        }
+        /* Estilos del menú lateral */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 2; /* Coloca el menú encima del contenido */
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 22px;
+            padding: 10px;
+            display: block;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            background: #ec8f0c;
+            border-radius: 5px;
+        }
+
+        /* Cambio del idioma arriba */
+        nav .language-switch {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px; 
+        }
+
+        nav .language-switch span {
+            cursor: pointer;
+            font-size: 22px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        nav .language-switch span.active {
+            text-decoration: underline;
+            color: #00ff00;
+        }
+
+        /* Estilos del contenido */
+        main {
+            margin-left: 220px;
+        }
+
+        /* colores */
+        .highlight_orange{
+            color: #ec8f0c;
+        }
+
+        .highlight_green{
+            color: #00ff00;
+        }
+
+        /* Estilos diferenciados por sección */
+
+        section {
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #presentation {
+            /*background: #161616;*/
+            display: flex;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
+            font-size: 70px;
+        }
+        
+        /*Imagenes*/
+        .image-row {
+            display: flex; /* Alinea los elementos en fila */
+            flex-wrap: wrap;
+            justify-content: center; /* Centra las imágenes horizontalmente */
+            gap: 20px; 
+        }
+
+        .image-row img {
+            width: 135px; 
+            height: auto; 
+        }
+        /*imagenes*/
+
+        #experience {
+            display: flex; 
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            margin-left: 50px;
+        }
+
+        /* Boton de descarga*/
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #161616;
+            background-color: #00ff00;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .download-button:hover {
+            filter: brightness(1.5);
+        }
+
+        #projects {
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: left; 
+        }
+
+        /*animacion carga*/
+        .loader-container {
+            text-align: center;
+        }
+
+        .loading-text {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 20px;
+            border: 2px solid #00ff00;
+            /*background-color: black;*/
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .loading-fill { 
+            height: 100%;
+            width: 0;
+            background-color: #00ff00;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: width 0.1s;
+        }
+
+        .loading-percent {
+            font-size: 16px;
+        }
+
+        .error-message {
+            display: none;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .error-line {
+            font-size: 22px;
+            color: #00ff00;
+        }
+
+        #projects-content {
+            margin-top: 20px;
+        }
+        /*animacion carga*/
+
+        footer {
+            text-align: center;
+            font-size: 22px;
+            padding: 10px 0;
+            color: #fff;
+        }
+
+        .footer-images-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5%;
+            margin-bottom: 2.5%; 
+            max-width: 100%;
+        }
+
+        .footer-images-container img {
+            width: 50px; 
+            height: auto; 
+            /*transition: transform 0.3s, filter 0.3s;*/
+        }
+
+        /* CSS responsivo */
+        @media (max-width: 768px) {
+        nav {
+            position: fixed;
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 10px;
+            padding-left: 0;
+            background-color: #161616;
+        }
+
+        nav a {
+            font-size: 16px;
+            margin: 0;
+            padding: 5px 10px;
+        }
+
+        nav .language-switch {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin: 0;
+        }
+
+        nav .language-switch span {
+            font-size: 18px;
+        }
+
+        main {
+            margin-left: 0;
+        }
+
+        section {
+            height: auto;
+            padding: 20px;
+        }
+
+        #presentation {
+            margin-top: auto;
+            font-size: 40px;
+        }
+
+        .image-row img {
+            width: 15%; 
+            height: auto; 
+        }
+
+        .footer-images-container img {
+        width: 40px; /* Tamaño para tablets */
+        }
+    }
+
+    @media (max-width: 480px) {
+        nav {
+            position: fixed;
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 10px;
+            padding-left: 0;
+            background-color: #161616;
+        }
+
+        nav a {
+            font-size: 16px;
+            margin: 0;
+            padding: 5px 10px;
+        }
+
+        nav .language-switch {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin: 0;
+        }
+
+        nav .language-switch span {
+            font-size: 14px;
+        }
+
+        main {
+            margin-left: 0;
+        }
+
+        section {
+            height: auto;
+            padding: 20px;
+        }
+
+        #presentation {
+            margin-top: 40px;
+            font-size: 30px;
+        }
+
+        .image-row img {
+            width: 15%; 
+            height: auto; 
+        }
+
+        .footer-images-container img {
+        width: 40px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Menú lateral -->
+    <nav>
+        <div class="language-switch">
+            <span id="lang-en" class="active">English</span>
+            <span id="lang-es">Español</span>
+        </div>
+        <div class="indicator"></div>
+        <a href="#presentation" id="menu_presentation">Presentation</a>
+        <a href="#experience" id="menu_experience">Experience</a>
+        <a href="#projects" id="menu_projects">Projects</a>
+    </nav>
+
+    <!-- background -->
+    <video autoplay muted loop>
+        <source src="background/82170-577893740.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+
+    <!-- Contenido principal -->
+    <main>
+
+        <!-- Seccion sobre mí-->
+        <section id="presentation">
+            <h1 id="presentation_title">HI! I AM <span class="highlight_orange">ADRIÁN RODRÍGUEZ</span><br> SYSTEMS AND NETWORKS ADMINISTRATOR</h1>
+            <div class="image-row">
+                <img src="imagenes\python_logo1.png" alt="Imagen 1">
+                <img src="imagenes\sql_logo1.png" alt="Imagen 2">
+                <img src="imagenes\HTML5_logo1.png" alt="Imagen 3">
+                <img src="imagenes\CSS3_logo1.png" alt="Imagen 4">
+                <img src="imagenes\JavaScript_logo1.png" alt="Imagen 5">
+            </div>
+            <div class="image-row">
+                <img src="imagenes/Nmap_logo1.png" alt="Imagen 6">
+                <img src="imagenes/Wireshark_Logo1.png" alt="Imagen 7">
+                <img src="imagenes/cisco_logo.png" alt="Imagen 8">
+                <img src="imagenes/linux_logo.png" alt="Imagen 9">
+                <img src="imagenes/Ubuntu_logo.png" alt="Imagen 10">
+            </div>
+
+        </section>
+        <!-- Seccion sobre mí-->
+
+        <!-- Seccion experiencia-->
+        <section id="experience">
+             <h2 id="experience_h2" style="font-size: 35px;"><span class="highlight_orange">1 year in IT positions but much more than that</span></h2>
+             <p id="experience_text" style="font-size: 24px;">Around <span class="highlight_orange">a year of experience</span> working in IT positions, some of them were small companies with dinamic roles demanding me more than only the IT part. The positions were:</p>
+                 <article>
+                     <h4 id="job1" style="font-size: 24px;"><span class="highlight_orange">Web Technician in EnvíoMédical</span> (7 months).</h4>
+                     <p id="job1_description" style="font-size: 22px;">-Worked as FullStack Developer combined with other tasks.</p>
+                 </article>
+                 <article>
+                     <h4 id="job2" style="font-size: 24px;"><span class="highlight_orange">Support Technician in Inelcom</span> (3 months).</h4>
+                     <p id="job2_description" style="font-size: 22px;">-Support Technician working with Cisco Packet Tracer.</p>
+                 </article>
+                 <article>
+                     <h4 id="job3" style="font-size: 24px;"><span class="highlight_orange">DataBase Developer in NovaMetal</span> (3 months).</h4>
+                     <p id="job3_description" style="font-size: 22px;">-I helped to create a database about the suppliers, clients and workers for NovaMetal a metallurgy bussines.</p>
+                 </article>
+            <p id="experience_text2" style="font-size: 21px;">
+            In addition I would like to count the experience that my <span class="highlight_orange">IT formation gave me like Systems and Network Administrator Technician</span>, and all the time dedicated to learn by myself. That way we can say that <span class="highlight_orange">is more than only one year</span>!.
+            <br>
+            If you want to know more about my work experience download my resumé here:
+            <br></p>
+            <a href="ruta/al/curriculum.pdf" id="download_button" download="Adrián Rodríguez Cv.pdf" class="download-button">Resumé</a>
+ 
+         </section>
+         <!-- Seccion experiencia-->
+
+         <!-- Seccion proyectos-->
+         <section id="projects">
+            <h2 id="projects_title" style="font-size: 50px"><span class="highlight_orange">My Projects</span></h2>
+            <div id="loading-animation" style="display: none;">
+                <div class="loader-container">
+                    <div class="loading-text" style="font-size: 22px;">Loading...</div>
+                    <div class="loading-bar">
+                        <div class="loading-fill"></div>
+                    </div>
+                    <div class="loading-percent" style="font-size: 22px;">0%</div>
+                    <div class="error-message">
+                        <div class="error-line" id="line1"></div>
+                        <div class="error-line" id="line2"></div>
+                        <!-- <div class="error-line" id="line3"></div> -->
+                    </div>
+                </div>
+            </div>
+            <div id="projects-content" style="display: none;">
+                <article>
+                    <h3 id="Soon_message" style="font-size: 24px;"><span class="highlight_orange">Soon...</span> I am working on it</h3>
+                    <p id="Soon_description" style="font-size: 24px;">For the moment you can <span class="highlight_orange">take a look to my portfolio</span> that is one of my projects too. Feel free to <span class="highlight_orange">explore the files in my GitHub repository</span>!</p>
+                </article>
+                <!-- <article>
+                    <h3 id="project1-title">Project 1</h3>
+                    <p id="project1-description">Nothing for the moment</p>
+                </article>
+                <article>
+                    <h3 id="project2-title">Project 2</h3>
+                    <p id="project2-description">Soon.</p>
+                </article> -->
+            </div>
+        </section>
+        <!-- Seccion proyectos-->
+
+        <footer>
+            <!-- imagenes estaticas interactivas -->
+            <div class="footer-images-container">
+                    <a href="https://www.linkedin.com/in/adrian-rodriguez-107aa4209/" target="_blank">
+                        <img src="imagenes/linkedin_logoverde.png" alt="Linkedin">
+                    </a>
+                    <a href="https://github.com/NoNameNPC-1" target="_blank">
+                        <img src="imagenes/github_logoverde.png" alt="GitHub">
+                    </a>
+                    <a href="mailto:adri90s.d.c@gmail.com" target="_blank">
+                            <img src="imagenes/gmail_logoverde.png" alt="Gmail">
+                    </a>
+            </div>
+             <!-- imagenes estaticas interactivas -->
+            <p>&copy; <span class="highlight_orange">Adrián Rodríguez Paulos. All rights reserved.</span></p>
+        </footer>
+
+    </main>
+
+    <script>
+        // JavaScript
+        const translations = {
+            en: {
+        menuPresentation: "Presentation",
+        menuExperience: "Experience",
+        menuProjects: "Projects",
+        presentationTitle: "HI! I AM <span class='highlight_orange'>ADRIÁN RODRÍGUEZ</span> <br> SYSTEMS AND NETWORKS ADMINISTRATOR",
+        experienceH2: "<span class='highlight_orange'>1 year in IT positions but much more than that</span>",
+        experienceText: 'Around<span class="highlight_orange"> a year of experience</span> working in IT positions, some of them were small companies with dinamic roles demanding me more than only the IT part. The positions were:',
+        job1: "<span class='highlight_orange'>Web Technician in EnvíoMédical</span> (7 months).",
+        job1Description: "-Worked as a FullStack Developer combined with other tasks.",
+        job2: "<span class='highlight_orange'>Support Technician in Inelcom</span> (3 months).",
+        job2Description: "-Support Technician working with Cisco Packet Tracer.",
+        job3: "<span class='highlight_orange'>Database Developer in NovaMetal</span> (3 months).",
+        job3Description: "-I helped create a database about the suppliers, clients, and workers for NovaMetal, a metallurgy business.",
+        experienceText2: "Additionally, I would like to count the experience that my <span class='highlight_orange'>IT training as a Systems and Network Administrator Technician</span> gave me, as well as all the time dedicated to self-learning. That way, <span class='highlight_orange'>it's more than just one year</span>!.<br>If you want to know more about my work experience, download my resumé here:",
+        downloadButton: "Resumé",
+        projectsTitle:'<span class="highlight_orange">My Projects</span>',
+        soonMessage: "<span class='highlight_orange'>Soon...</span> I am working on it.",
+        soonDescription: 'For the moment you can <span class="highlight_orange">take a look to my portfolio</span> that is one of my projects too. Feel free to <span class="highlight_orange">explore the files in my GitHub repository</span>!',
+    },
+    es: {
+        menuPresentation: "Presentación",
+        menuExperience: "Experiencia",
+        menuProjects: "Proyectos",
+        presentationTitle: "¡Hola! Soy <span class='highlight_orange'>ADRIÁN RODRÍGUEZ</span> Administrador<br> de Sistemas informáticos y redes",
+        experienceH2: "<span class='highlight_orange'>1 año en posiciones de Informático pero mucho más que eso</span>",
+        experienceText: "Cerca de <span class='highlight_orange'>un año de experiencia</span> trabajando en algunas pequeñas empresas con roles dinámicos que requerían más que solo tareas de Informática. Las posiciones fueron:",
+        job1: "<span class='highlight_orange'>Técnico Web en EnvíoMédical</span> (7 meses).",
+        job1Description: "-Trabajé como desarrollador FullStack combinado con otras tareas de administración y marketing.",
+        job2: "<span class='highlight_orange'>Técnico de Soporte en Inelcom</span> (3 meses).",
+        job2Description: "-Técnico de soporte trabajando con Cisco Packet Tracer.",
+        job3: "<span class='highlight_orange'>Desarrollador de Base de Datos en NovaMetal</span> (3 meses).",
+        job3Description: "-Ayudé a crear una base de datos sobre los proveedores, clientes y trabajadores en NovaMetal, una empresa de metalurgia.",
+        experienceText2: "Además, me gustaría contar la experiencia que mi <span class='highlight_orange'>formación como Técnico en Administración de Sistemas informáticos y redes</span> me brindó, así como todo el tiempo dedicado al autoaprendizaje. De esta forma puedo decir que,<br> ¡<span class='highlight_orange'>es más que solo un año</span>!.<br>Si deseas saber más sobre mi experiencia laboral, descarga mi currículum aquí:",
+        downloadButton: "Currículum",
+        projectsTitle: '<span class="highlight_orange">Mis proyectos</span>',
+        soonMessage: "<span class='highlight_orange'>Pronto tendre cosas que mostrar...</span> el trabajo no para.",
+        soonDescription: "Por ahora, puedes <span class='highlight_orange'>revisar mi portafolio web</span>, que es uno de mis proyectos también. Te invito a <span class='highlight_orange'>explorar los archivos en mi repositorio de GitHub</span>.",
+    },
+};
+
+
+        const langEn = document.getElementById("lang-en");
+        const langEs = document.getElementById("lang-es");
+
+        // Función para cambiar el idioma
+        function switchLanguage(lang) {
+            const content = translations[lang];
+
+            document.getElementById("menu_presentation").textContent = content.menuPresentation;
+            document.getElementById("menu_experience").textContent = content.menuExperience;
+            document.getElementById("menu_projects").textContent = content.menuProjects;
+
+            document.getElementById("presentation_title").innerHTML = content.presentationTitle;
+            //document.getElementById("presentation_text").innerHTML = content.presentationText;
+            document.getElementById("experience_h2").innerHTML = content.experienceH2;
+            document.getElementById("experience_text").innerHTML = content.experienceText;
+            document.getElementById("job1").innerHTML = content.job1;
+            document.getElementById("job1_description").innerHTML = content.job1Description;
+            document.getElementById("job2").innerHTML = content.job2;
+            document.getElementById("job2_description").innerHTML = content.job2Description;
+            document.getElementById("job3").innerHTML = content.job3;
+            document.getElementById("job3_description").innerHTML = content.job3Description;
+            document.getElementById("experience_text2").innerHTML = content.experienceText2;
+            document.getElementById("download_button").innerHTML = content.downloadButton;
+            document.getElementById("projects_title").innerHTML = content.projectsTitle;
+            document.getElementById("Soon_message").innerHTML = content.soonMessage;
+            document.getElementById("Soon_description").innerHTML = content.soonDescription;
+            //document.getElementById("project2_title").innerHTML = content.project2Title;
+            //document.getElementById("project2_description").innerHTML = content.project2Description;
+
+            // Actualizar estado visual del idioma activo
+            if (lang === "en") {
+                langEn.classList.add("active");
+                langEs.classList.remove("active");
+            } else {
+                langEs.classList.add("active");
+                langEn.classList.remove("active");
+            }
+        }
+
+        // Listeners para cambiar el idioma
+        document.getElementById("lang-en").addEventListener("click", () => switchLanguage("en"));
+        document.getElementById("lang-es").addEventListener("click", () => switchLanguage("es"));
+
+        //Menu laterel
+        const menuItems = document.querySelectorAll("nav a");
+        const indicator = document.querySelector(".indicator");
+        const sections = document.querySelectorAll("section");
+
+        let currentSectionIndex = 0;
+
+        const updateActiveSection = (index) => {
+
+            // Actualizar el estado del menú
+            menuItems.forEach((item, i) => {
+                item.classList.toggle("active", i === index);
+            });
+
+            // Mover el indicador
+            const targetMenuItem = menuItems[index];
+            indicator.style.transform = `translateY(${targetMenuItem.offsetTop}px)`;
+
+            // Desplazar la sección al centro de la vista
+            sections[index].scrollIntoView({ behavior: "smooth" });
+
+            // Actualizar índice actual
+            currentSectionIndex = index;
+        };
+
+        //El selector del menú se mueve con el scroll
+        const handleScroll = () => {
+            let closestSectionIndex = -1;
+            let minDistance = Infinity;
+
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                const distanceToTop = Math.abs(rect.top);
+
+                if (distanceToTop < minDistance) {
+                    minDistance = distanceToTop;
+                    closestSectionIndex = index;
+                }
+            });
+
+            if (closestSectionIndex !== currentSectionIndex) {
+                menuItems.forEach((item, i) => {
+                    item.classList.toggle("active", i === closestSectionIndex);
+                });
+
+                const targetMenuItem = menuItems[closestSectionIndex];
+                indicator.style.transform = `translateY(${targetMenuItem.offsetTop}px)`;
+
+                currentSectionIndex = closestSectionIndex;
+            }
+        };
+
+
+        window.addEventListener("scroll", handleScroll);
+
+        // Navegación mediante clic
+        menuItems.forEach((item, index) => {
+            item.addEventListener("click", (e) => {
+                e.preventDefault();
+                updateActiveSection(index);
+            });
+        });
+
+        // Inicializar sección activa
+        updateActiveSection(0);
+
+        //Funcion para la animacion de la seccion Projects
+        let projectsLoaded = false;
+
+    function showLoadingAnimation() {
+        const loadingAnimation = document.getElementById("loading-animation");
+        const projectsContent = document.getElementById("projects-content");
+        const loadingFill = document.querySelector('.loading-fill');
+        const loadingPercent = document.querySelector('.loading-percent');
+        const loadingText = document.querySelector('.loading-text');
+        const loadingBar = document.querySelector('.loading-bar');
+        const errorMessage = document.querySelector('.error-message');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        //const line3 = document.getElementById('line3');
+        const errorText1 = "Error 404";
+        const errorText2 = "Page not Found";
+        //const errorText3 = "Soon I will upload some projects here, but right now you are watching one of them, so I invite you to enter to my GitHub repository and take a look to the files of my portfolio!";
+
+        loadingAnimation.style.display = "block";
+        projectsContent.style.display = "none";
+        errorMessage.style.display = "none";
+
+        let percent = 0;
+        let charIndex = 0;
+
+        function updateLoader() {
+            percent += 1;
+            loadingFill.style.width = percent + '%';
+            loadingPercent.textContent = percent + '%';
+
+            if (percent < 99.5) {
+                setTimeout(updateLoader, 30);
+            } else {
+                loadingPercent.textContent = "99.5%";
+                loadingText.style.display = "none";
+                loadingBar.style.display = "none";
+                loadingPercent.style.display = "none";
+                errorMessage.style.display = "block";
+                typeText(line1, errorText1, () => {
+                    typeText(line2, errorText2, () => {
+                        //typeText(line3, errorText3, () => {
+                            // Mostrar contenido después de la animación
+                            //loadingAnimation.style.display = "none";
+                            projectsContent.style.display = "block";
+                        //});
+                    });
+                });
+            }
+        }
+
+        function typeText(element, text, callback) {
+            charIndex = 0;
+
+            function typeChar() {
+                if (charIndex < text.length) {
+                    element.textContent += text[charIndex];
+                    charIndex++;
+                    setTimeout(typeChar, 100);
+                } else if (callback) {
+                    callback();
+                }
+            }
+
+            typeChar();
+        }
+
+        updateLoader();
+    }
+
+    // Detectar cuando se visualiza la sección `projects`
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !projectsLoaded) {
+                    projectsLoaded = true;
+                    showLoadingAnimation();
+                }
+            });
+        },
+        {
+            root: null, // Viewport del navegador
+            rootMargin: "0px", // Sin margen adicional
+            threshold: 0.5, // El 50% de la sección debe estar visible
+        }
+    );
+
+    observer.observe(document.getElementById("projects"));
+    </script>
+</body>
+</html>

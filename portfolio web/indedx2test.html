@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrián Rodríguez Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DotGothic16&display=swap" rel="stylesheet">
+
+
+    <style>
+
+        /* CSS */
+        body {
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            background-color: #161616;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #fff;
+            /*height: 100%; /* Asegura que no haya espacio adicional */
+        }
+
+        /*video de fondo*/
+        video {
+            position: fixed; /* Fija el video en el fondo */
+            top: 0;
+            left: 0;
+            width: 100%; /* Abarca todo el ancho */
+            height: 100%; /* Abarca todo el alto */
+            object-fit: cover; /* Escala el video para cubrir toda el área */
+            z-index: -1; /* Coloca el video detrás del contenido */
+        }
+
+        /* Modificar barra lateral */
+        ::-webkit-scrollbar {
+            background-color: #161616; /* Fondo de la barra */
+        }
+        ::-webkit-scrollbar-button {
+            background-color: #00ff00; /* Color de las flechas */
+        }
+
+        /* Personaliza el área de la barra que se desplaza */
+        ::-webkit-scrollbar-thumb {
+            background-color: #00ff00; /* Color del área de desplazamiento */
+        }
+
+        /* Personaliza las flechas cuando están en estado hover */
+        ::-webkit-scrollbar-button:hover {
+            background-color: #00ff0097;
+        }
+
+        /* Estilos del menú lateral */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            /*background: #161616;*/
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+            /*border-right: 1px solid #fff;*/
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 18px;
+            padding: 10px;
+            display: block;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            background: #ec8f0c;
+            border-radius: 5px;
+        }
+
+        /*nav .indicator {
+            position: absolute;
+            left: -5px;
+            width: 5px;
+            height: 40px;
+            background: #e9c46a;
+            transition: transform 0.3s ease;
+        }*/
+
+        /* Cambio del idioma arriba */
+        nav .language-switch {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px; /* Añadir espacio debajo del selector de idioma */
+        }
+
+        nav .language-switch span {
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        nav .language-switch span.active {
+            text-decoration: underline;
+            color: #ec8f0c;
+        }
+
+        /*nav .indicator {
+            position: absolute;
+            left: -5px;
+            width: 5px;
+            height: 40px;
+            background: #e9c46a;
+            transition: transform 0.3s ease;
+        }*/
+
+        /* Estilos del contenido */
+        main {
+            margin-left: 220px;
+        }
+
+        /*imagen interactiva*/
+        .interactive-image-container {
+            position: fixed;
+            top: 60%;
+            left: 50px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        .interactive-image {
+            display: inline-block;
+            /*margin-left: 75px;*/
+            max-width: 50px;
+            height: auto;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .interactive-image:hover {
+            /*transform: scale(1.1);*/
+            filter: brightness(1.5);
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #161616;
+            background-color: #ec8f0c;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .download-button:hover {
+            background-color: #ec8f0c;
+        }
+
+        /* colores */
+        .highlight_green{
+            color: #ec8f0c;
+        }
+
+        /* Estilos diferenciados por sección */
+
+        section {
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #presentation {
+            /*background: #161616;*/
+            display: flex;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+        }
+        
+        /*Imagenes*/
+        .image-row {
+            display: flex; /* Alinea los elementos en fila */
+            justify-content: center; /* Centra las imágenes horizontalmente */
+            gap: 20px; /* Espacio entre las imágenes */
+        }
+
+        .image-row img {
+            width: 135px; /* Ajusta el tamaño de las imágenes */
+            height: auto; /* Mantiene la proporción */
+        }
+        /*imagenes*/
+
+        #experience {
+            /*background: #161616;*/
+            display: flex; 
+            flex-direction: column;
+            text-align: left;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #projects {
+            /*background: #161616;*/
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: left; 
+        }
+
+        .loader-container {
+            text-align: center;
+        }
+
+        .loading-text {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 20px;
+            border: 2px solid #00ff00;
+            background-color: black;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .loading-fill { 
+            height: 100%;
+            width: 0;
+            background-color: #00ff00;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: width 0.1s;
+        }
+
+        .loading-percent {
+            font-size: 16px;
+        }
+
+        .error-message {
+            display: none;
+            text-align: center;
+        }
+
+        #contact {
+            /*background: #161616;*/
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            /*background: #75a5d5;*/
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú lateral -->
+    <nav>
+        <div class="language-switch">
+            <span id="lang-en" class="active">English</span>
+            <span id="lang-es">Español</span>
+        </div>
+        <div class="indicator"></div>
+        <a href="#presentation" id="menu_presentation">Presentation</a>
+        <a href="#experience" id="menu_experience">Experience</a>
+        <a href="#projects" id="menu_projects">Projects</a>
+        <a href="#contact" id="menu_contact">Contact</a>
+    </nav>
+
+    <!-- background -->
+    <video autoplay muted loop>
+        <source src="background/82170-577893740.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+
+    <!-- Contenido principal -->
+    <main>
+        <section id="presentation">
+            <h1 id="presentation_title" style="font-size: 80px;">HI! I AM <span class="highlight_green">ADRIÁN RODRÍGUEZ</span> <br> SYSTEMS AND NETWORKS ADMINISTRATOR</h1>
+            <div class="image-row">
+                <img src="imagenes\python_logo1.png" alt="Imagen 1">
+                <img src="imagenes\sql_logo1.png" alt="Imagen 2">
+                <img src="imagenes\HTML5_logo1.png" alt="Imagen 3">
+                <img src="imagenes\CSS3_logo1.png" alt="Imagen 4">
+                <img src="imagenes\JavaScript_logo1.png" alt="Imagen 5">
+            </div>
+            <div class="image-row">
+                <img src="imagenes/Nmap_logo1.png" alt="Imagen 6">
+                <img src="imagenes/Wireshark_Logo1.png" alt="Imagen 7">
+                <img src="imagenes/cisco_logo.png" alt="Imagen 8">
+                <img src="imagenes/linux_logo.png" alt="Imagen 9">
+                <img src="imagenes/Ubuntu_logo.png" alt="Imagen 10">
+            </div>
+
+            <div class="interactive-image-container">
+                <div class="interactive-image-wrapper">
+                    <a href="https://www.linkedin.com/in/adrian-rodriguez-107aa4209/" target="_blank">
+                        <img src="imagenes/linkedin_logo1.png" alt="Imagen Interactiva" class="interactive-image">
+                    </a>
+                    <div class="text">Linkedin</div>
+                </div>
+                <div class="interactive-image-wrapper">
+                    <a href="https://www.linkedin.com/in/adrian-rodriguez-107aa4209/" target="_blank">
+                        <img src="imagenes/github_logo1.png" alt="Imagen Interactiva" class="interactive-image">
+                    </a>
+                    <div class="text">GitHub</div>
+                    <br>
+                <div class="interactive-image-wrapper">
+                        <a href="mailto:adri90s.d.c@gmail.com" target="_blank">
+                            <img src="imagenes/gmail_logo1.png" alt="Imagen Interactiva" class="interactive-image">
+                        </a>
+                        <div class="text">Gmail</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+           <!-- <h1 id="experience_title" style="font-size: 65px;"><span class="highlight_green">My experience</span></h1> -->
+            <h2 id="experience_h2" style="font-size: 35px;"><span class="highlight_green">1 year in IT possitions but much more than that</span>.</h2>
+            <p id="experience_text" style="font-size: 26px;">Around <span class="highlight_green">a year of experience</span> working in IT possitions, some of them where small companies with dinamic positions demanding me more than only the IT part. The possitions were:</p>
+                <article>
+                    <h4 id="job1" style="font-size: 22px;"><span class="highlight_green">Technician in EnvíoMédical Web</span> (7 months).</h4>
+                    <p id="job1_description" style="font-size: 18px;">-Worked as FullStack Developer appart from other tasks.</p>
+                </article>
+                <article>
+                    <h4 id="job2" style="font-size: 22px;"><span class="highlight_green">Support Technician in Inelcom</span> (3 months).</h4>
+                    <p id="job2_description" style="font-size: 18px;">-Support Technician working with Cisco Packet Tracer.</p>
+                </article>
+                <article>
+                    <h4 id="job3" style="font-size: 22px;"><span class="highlight_green">DataBase Developer in NovaMetal</span> (3 months).</h4>
+                    <p id="job3_description" style="font-size: 18px;">-I helped to create a database about the providers, clients and workers for NovaMetal a metallurgy bussines.</p>
+                </article>
+                <p id="experience_text2" style="font-size: 20px;">
+                In addition I would like to count the experience that my IT formation gave me like Systems and Network Administrator Technician, and all the time dedicated to learn by myself. That way we can say that is more than only one year!.
+                <br>
+                If you want to know more about my work experience download my resumé here:
+                <br></p>
+                <a href="ruta/al/curriculum.pdf" id="download_button" download="Adrián Rodríguez Cv.pdf" class="download-button">Resumé</a>
+
+        </section>
+
+        <section id="projects">
+            <h2 id="projects_title">My Projects</h2>
+            <div id="loading-animation" style="display: none;">
+                <div class="loader-container">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-bar">
+                        <div class="loading-fill"></div>
+                    </div>
+                    <div class="loading-percent">0%</div>
+                    <div class="error-message">
+                        <div class="error-line" id="line1"></div>
+                        <div class="error-line" id="line2"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="projects-content" style="display: none;">
+                <article>
+                    <h3 id="project1-title">Project 1</h3>
+                    <p id="project1-description">Nothing for the moment</p>
+                </article>
+                <article>
+                    <h3 id="project2-title">Project 2</h3>
+                    <p id="project2-description">Soon.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 id="contact_title">Contact Me</h2>
+            <p id="contact_text">Feel free to reach out via gmail: <a href="mailto:adri90s.d.c@gmail.com"><font color='#00ff00'>adri90s.d.c@gmail.com</font></a></p>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript
+        const translations = {
+            en: {
+                presentationTitle: "Welcome to My Portfolio!",
+                presentationText: "Hi! I am Adrián Rodríguez Back End Developer.",
+                projectsTitle: "Soon you will be able to see my projects here.",
+                //project1Title: "Project 1",
+                //project1Description: "Nothing for the moment.",
+                //project2Title: "Project 2",
+                //project2Description: "Soon.",
+                contactTitle: "Contact Me",
+                contactText: "Feel free to reach out via gmail: <a href='mailto:adri90s.d.c@gmail.com'>adri90s.d.c@gmail.com</a>"
+            },
+            es: {
+                presentation: "Presentación",
+                presentationTitle: "¡Bienvenido a Mi Portafolio!",
+                presentationText: "Mi nombre es Adrián Rodríguez Paulos y soy Desarrollador Back End..",
+                projectsTitle: "Pronto subiré mis proyectos en esta sección",
+                //project1Title: "Proyecto 1",
+                //project1Description: "!Pronto podras ver algo, solo espera¡.",
+                //project2Title: "Proyecto 2",
+                //project2Description: "!Pronto podras ver algo, solo espera¡",
+                contactTitle: "Contáctame",
+                contactText: "No dudes en escribirme a: <a href='mailto:adri90s.d.c@gmail.com'>adri90s.d.c@gmail.com.com</a>"
+            }
+        };
+
+        const menuItems = document.querySelectorAll("nav a");
+        const indicator = document.querySelector(".indicator");
+        const sections = document.querySelectorAll("section");
+        const langEn = document.getElementById("lang-en");
+        const langEs = document.getElementById("lang-es");
+        
+        let currentSectionIndex = 0;
+
+        const updateActiveSection = (index) => {
+
+            // Actualizar el estado del menú
+            menuItems.forEach((item, i) => {
+                item.classList.toggle("active", i === index);
+            });
+
+            // Mover el indicador
+            const targetMenuItem = menuItems[index];
+            indicator.style.transform = `translateY(${targetMenuItem.offsetTop}px)`;
+
+            // Desplazar la sección al centro de la vista
+            sections[index].scrollIntoView({ behavior: "smooth" });
+
+            // Actualizar índice actual
+            currentSectionIndex = index;
+        };
+
+        //El selector del menú se mueve con el scroll
+        const handleScroll = () => {
+            let closestSectionIndex = -1;
+            let minDistance = Infinity;
+
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                const distanceToTop = Math.abs(rect.top);
+
+                if (distanceToTop < minDistance) {
+                    minDistance = distanceToTop;
+                    closestSectionIndex = index;
+                }
+            });
+
+            if (closestSectionIndex !== currentSectionIndex) {
+                menuItems.forEach((item, i) => {
+                    item.classList.toggle("active", i === closestSectionIndex);
+                });
+
+                const targetMenuItem = menuItems[closestSectionIndex];
+                indicator.style.transform = `translateY(${targetMenuItem.offsetTop}px)`;
+
+                currentSectionIndex = closestSectionIndex;
+            }
+        };
+
+
+        window.addEventListener("scroll", handleScroll);
+
+        // Navegación mediante clic
+        menuItems.forEach((item, index) => {
+            item.addEventListener("click", (e) => {
+                e.preventDefault();
+                updateActiveSection(index);
+            });
+        });
+
+        // Inicializar sección activa
+        updateActiveSection(0);
+
+        // Función para cambiar el idioma
+        function switchLanguage(lang) {
+            const content = translations[lang];
+            document.getElementByhref("menu_presentation").textContent = content.presentation;
+            document.getElementById("presentation_title").textContent = content.presentationTitle;
+            document.getElementById("presentation_text").textContent = content.presentationText;
+            document.getElementById("projects_title").textContent = content.projectsTitle;
+            document.getElementById("project1_title").textContent = content.project1Title;
+            document.getElementById("project1_description").textContent = content.project1Description;
+            document.getElementById("project2_title").textContent = content.project2Title;
+            document.getElementById("project2_description").textContent = content.project2Description;
+            document.getElementById("contact_title").textContent = content.contactTitle;
+            document.getElementById("contact_text").innerHTML = content.contactText;
+
+            // Actualizar estado visual del idioma activo
+            if (lang === "en") {
+                langEn.classList.add("active");
+                langEs.classList.remove("active");
+            } else {
+                langEs.classList.add("active");
+                langEn.classList.remove("active");
+            }
+        }
+
+        // Listeners para cambiar el idioma
+        langEn.addEventListener("click", () => switchLanguage("en"));
+        langEs.addEventListener("click", () => switchLanguage("es"));
+
+        //Funcion para la animacion de la seccion Projects
+        let projectsLoaded = false;
+
+    function showLoadingAnimation() {
+        const loadingAnimation = document.getElementById("loading-animation");
+        const projectsContent = document.getElementById("projects-content");
+        const loadingFill = document.querySelector('.loading-fill');
+        const loadingPercent = document.querySelector('.loading-percent');
+        const loadingText = document.querySelector('.loading-text');
+        const loadingBar = document.querySelector('.loading-bar');
+        const errorMessage = document.querySelector('.error-message');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const errorText1 = "Error 404";
+        const errorText2 = "Page not Found";
+
+        loadingAnimation.style.display = "block";
+        projectsContent.style.display = "none";
+
+        let percent = 0;
+        let charIndex = 0;
+
+        function updateLoader() {
+            percent += 1;
+            loadingFill.style.width = percent + '%';
+            loadingPercent.textContent = percent + '%';
+
+            if (percent < 99.5) {
+                setTimeout(updateLoader, 30);
+            } else {
+                loadingPercent.textContent = "99.5%";
+                loadingText.style.display = "none";
+                loadingBar.style.display = "none";
+                loadingPercent.style.display = "none";
+                errorMessage.style.display = "block";
+                typeText(line1, errorText1, () => {
+                    typeText(line2, errorText2, () => {
+                        // Mostrar contenido después de la animación
+                        //loadingAnimation.style.display = "none";
+                        //projectsContent.style.display = "block";
+                    });
+                });
+            }
+        }
+
+        function typeText(element, text, callback) {
+            charIndex = 0;
+
+            function typeChar() {
+                if (charIndex < text.length) {
+                    element.textContent += text[charIndex];
+                    charIndex++;
+                    setTimeout(typeChar, 100);
+                } else if (callback) {
+                    callback();
+                }
+            }
+
+            typeChar();
+        }
+
+        updateLoader();
+    }
+
+    // Detectar cuando se visualiza la sección `projects`
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && !projectsLoaded) {
+                projectsLoaded = true;
+                showLoadingAnimation();
+            }
+        });
+    });
+
+    observer.observe(document.getElementById("projects"));
+    </script>
+</body>
+</html>

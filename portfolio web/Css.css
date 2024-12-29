@@ -1,0 +1,329 @@
+/* styles.css */
+body {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #161616;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #fff;
+}
+
+/*video de fondo*/
+video {
+    position: fixed; /* Fija el video en el fondo */
+    top: 0;
+    left: 0;
+    width: 100%; /* Abarca todo el ancho */
+    height: 100%; /* Abarca todo el alto */
+    object-fit: cover; /* Escala el video para cubrir toda el área */
+    z-index: -1; /* Coloca el video detrás del contenido */
+}
+/* Estilos del menú lateral */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 2; /* Coloca el menú encima del contenido */
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 20px;
+    font-size: 22px;
+    padding: 10px;
+    display: block;
+    position: relative;
+}
+
+nav a:hover, nav a.active {
+    background: #ec8f0c;
+    border-radius: 5px;
+}
+
+/* Cambio del idioma arriba */
+nav .language-switch {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+nav .language-switch span {
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+nav .language-switch span.active {
+    text-decoration: underline;
+    color: #00ff00;
+}
+
+/* Estilos del contenido */
+main {
+    margin-left: 220px;
+}
+
+/* colores */
+.highlight_orange{
+    color: #ec8f0c;
+}
+
+.highlight_green{
+    color: #00ff00;
+}
+
+/* Estilos diferenciados por sección */
+
+section {
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#presentation {
+    /*background: #161616;*/
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    font-size: 70px;
+}
+
+/*Imagenes*/
+.image-row {
+    display: flex; /* Alinea los elementos en fila */
+    flex-wrap: wrap;
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    gap: 20px; 
+}
+
+.image-row img {
+    width: 135px; 
+    height: auto; /* Mantiene la proporción */
+}
+/*imagenes*/
+
+#experience {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 50px;
+}
+
+/* Boton de descarga*/
+.download-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #161616;
+    background-color: #00ff00;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.download-button:hover {
+    filter: brightness(1.5);
+}
+
+#projects {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: left; 
+}
+
+/*animacion carga*/
+.loader-container {
+    text-align: center;
+}
+
+.loading-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.loading-bar {
+    width: 300px;
+    height: 20px;
+    border: 2px solid #00ff00;
+    /*background-color: black;*/
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.loading-fill { 
+    height: 100%;
+    width: 0;
+    background-color: #00ff00;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 0.1s;
+}
+
+.loading-percent {
+    font-size: 16px;
+}
+
+.error-message {
+    display: none;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.error-line {
+    font-size: 22px;
+    color: #00ff00;
+}
+
+#projects-content {
+    margin-top: 20px;
+}
+/*animacion carga*/
+
+footer {
+    text-align: center;
+    font-size: 22px;
+    padding: 10px 0;
+    color: #fff;
+}
+
+.footer-images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5%;
+    margin-bottom: 2.5%; 
+    max-width: 100%;
+}
+
+.footer-images-container img {
+    width: 50px; 
+    height: auto;
+    /*transition: transform 0.3s, filter 0.3s;*/
+}
+
+/* CSS responsivo */
+@media (max-width: 768px) {
+nav {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    padding-left: 0;
+    background-color: #161616;
+}
+
+nav a {
+    font-size: 16px;
+    margin: 0;
+    padding: 5px 10px;
+}
+
+nav .language-switch {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0;
+}
+
+nav .language-switch span {
+    font-size: 18px;
+}
+
+main {
+    margin-left: 0;
+}
+
+section {
+    height: auto;
+    padding: 20px;
+}
+
+#presentation {
+    margin-top: auto;
+    font-size: 40px;
+}
+
+.image-row img {
+    width: 15%; 
+    height: auto;
+}
+
+.footer-images-container img {
+width: 40px; /* Tamaño para tablets */
+}
+}
+
+@media (max-width: 480px) {
+nav {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    padding-left: 0;
+    background-color: #161616;
+}
+
+nav a {
+    font-size: 16px;
+    margin: 0;
+    padding: 5px 10px;
+}
+
+nav .language-switch {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0;
+}
+
+nav .language-switch span {
+    font-size: 14px;
+}
+
+main {
+    margin-left: 0;
+}
+
+section {
+    height: auto;
+    padding: 20px;
+}
+
+#presentation {
+    margin-top: 40px;
+    font-size: 30px;
+}
+
+.image-row img {
+    width: 15%;
+    height: auto;
+}
+
+.footer-images-container img {
+width: 40px;
+}
+}

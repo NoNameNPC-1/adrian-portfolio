@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrián Rodríguez Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DotGothic16&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Menú lateral -->
+    <nav>
+        <div class="language-switch">
+            <span id="lang-en" class="active">English</span>
+            <span id="lang-es">Español</span>
+        </div>
+        <div class="indicator"></div>
+        <a href="#presentation" id="menu_presentation">Presentation</a>
+        <a href="#experience" id="menu_experience">Experience</a>
+        <a href="#projects" id="menu_projects">Projects</a>
+    </nav>
+
+    <!-- background -->
+    <video autoplay muted loop>
+        <source src="background/82170-577893740.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+
+    <!-- Contenido principal -->
+    <main>
+
+        <!-- Seccion sobre mí-->
+        <section id="presentation">
+            <h1 id="presentation_title">HI! I AM <span class="highlight_orange">ADRIÁN RODRÍGUEZ</span><br> SYSTEMS AND NETWORKS ADMINISTRATOR</h1>
+            <div class="image-row">
+                <img src="imagenes\python_logo1.png" alt="Imagen 1">
+                <img src="imagenes\sql_logo1.png" alt="Imagen 2">
+                <img src="imagenes\HTML5_logo1.png" alt="Imagen 3">
+                <img src="imagenes\CSS3_logo1.png" alt="Imagen 4">
+                <img src="imagenes\JavaScript_logo1.png" alt="Imagen 5">
+            </div>
+            <div class="image-row">
+                <img src="imagenes/Nmap_logo1.png" alt="Imagen 6">
+                <img src="imagenes/Wireshark_Logo1.png" alt="Imagen 7">
+                <img src="imagenes/cisco_logo.png" alt="Imagen 8">
+                <img src="imagenes/linux_logo.png" alt="Imagen 9">
+                <img src="imagenes/Ubuntu_logo.png" alt="Imagen 10">
+            </div>
+
+        </section>
+        <!-- Seccion sobre mí-->
+
+        <!-- Seccion experiencia-->
+        <section id="experience">
+             <h2 id="experience_h2" style="font-size: 35px;"><span class="highlight_orange">1 year in IT positions but much more than that</span></h2>
+             <p id="experience_text" style="font-size: 24px;">Around <span class="highlight_orange">a year of experience</span> working in IT positions, some of them were small companies with dinamic roles demanding me more than only the IT part. The positions were:</p>
+                 <article>
+                     <h4 id="job1" style="font-size: 24px;"><span class="highlight_orange">Web Technician in EnvíoMédical</span> (7 months).</h4>
+                     <p id="job1_description" style="font-size: 22px;">-Worked as FullStack Developer combined with other tasks.</p>
+                 </article>
+                 <article>
+                     <h4 id="job2" style="font-size: 24px;"><span class="highlight_orange">Support Technician in Inelcom</span> (3 months).</h4>
+                     <p id="job2_description" style="font-size: 22px;">-Support Technician working with Cisco Packet Tracer.</p>
+                 </article>
+                 <article>
+                     <h4 id="job3" style="font-size: 24px;"><span class="highlight_orange">DataBase Developer in NovaMetal</span> (3 months).</h4>
+                     <p id="job3_description" style="font-size: 22px;">-I helped to create a database about the suppliers, clients and workers for NovaMetal a metallurgy bussines.</p>
+                 </article>
+            <p id="experience_text2" style="font-size: 21px;">
+            In addition I would like to count the experience that my <span class="highlight_orange">IT formation gave me like Systems and Network Administrator Technician</span>, and all the time dedicated to learn by myself. That way we can say that <span class="highlight_orange">is more than only one year</span>!.
+            <br>
+            If you want to know more about my work experience download my resumé here:
+            <br></p>
+            <a href="ruta/al/curriculum.pdf" id="download_button" download="Adrián Rodríguez Cv.pdf" class="download-button">Resumé</a>
+ 
+         </section>
+         <!-- Seccion experiencia-->
+
+         <!-- Seccion proyectos-->
+         <section id="projects">
+            <h2 id="projects_title" style="font-size: 50px"><span class="highlight_orange">My Projects</span></h2>
+            <div id="loading-animation" style="display: none;">
+                <div class="loader-container">
+                    <div class="loading-text" style="font-size: 22px;">Loading...</div>
+                    <div class="loading-bar">
+                        <div class="loading-fill"></div>
+                    </div>
+                    <div class="loading-percent" style="font-size: 22px;">0%</div>
+                    <div class="error-message">
+                        <div class="error-line" id="line1"></div>
+                        <div class="error-line" id="line2"></div>
+                        <!-- <div class="error-line" id="line3"></div> -->
+                    </div>
+                </div>
+            </div>
+            <div id="projects-content" style="display: none;">
+                <article>
+                    <h3 id="Soon_message" style="font-size: 24px;"><span class="highlight_orange">Soon...</span> I am working on it</h3>
+                    <p id="Soon_description" style="font-size: 24px;">For the moment you can <span class="highlight_orange">take a look to my portfolio</span> that is one of my projects too. Feel free to <span class="highlight_orange">explore the files in my GitHub repository</span>!</p>
+                </article>
+                <!-- <article>
+                    <h3 id="project1-title">Project 1</h3>
+                    <p id="project1-description">Nothing for the moment</p>
+                </article>
+                <article>
+                    <h3 id="project2-title">Project 2</h3>
+                    <p id="project2-description">Soon.</p>
+                </article> -->
+            </div>
+        </section>
+        <!-- Seccion proyectos-->
+
+        <footer>
+            <!-- imagenes estaticas interactivas -->
+            <div class="footer-images-container">
+                    <a href="https://www.linkedin.com/in/adrian-rodriguez-107aa4209/" target="_blank">
+                        <img src="imagenes/linkedin_logoverde.png" alt="Linkedin">
+                    </a>
+                    <a href="https://github.com/NoNameNPC-1" target="_blank">
+                        <img src="imagenes/github_logoverde.png" alt="GitHub">
+                    </a>
+                    <a href="mailto:adri90s.d.c@gmail.com" target="_blank">
+                            <img src="imagenes/gmail_logoverde.png" alt="Gmail">
+                    </a>
+            </div>
+             <!-- imagenes estaticas interactivas -->
+            <p>&copy; <span class="highlight_orange">Adrián Rodríguez Paulos. All rights reserved.</span></p>
+        </footer>
+
+    </main>

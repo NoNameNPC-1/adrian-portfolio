@@ -99,7 +99,7 @@
         /* Estilos diferenciados por sección */
 
         section {
-            height: 100vh;
+            height: auto;
             padding: 20px;
             box-sizing: border-box;
         }
@@ -136,7 +136,30 @@
             margin-left: 50px;
         }
 
+        .toggle-info {
+            cursor: pointer;
+            color: #00ff00;
+            font-weight: bold;
+        }
+        .content {
+            display: none; /* Oculta el contenido por defecto */
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgba(8, 0, 82, 0.8);
+            /*backdrop-filter: blur(2px);*/
+            border: 3px solid #ec8f0c;
+            border-radius: 10px;
+            color: white; /* Cambia el color del texto dentro del contenido */
+        }
+
         /* Boton de descarga*/
+        .button-container {
+            display: flex; /* Usamos Flexbox */
+            justify-content: center; /* Centrar los botones horizontalmente */
+            gap: 20px; /* Espacio entre los botones */
+            padding: 20px; /* Espaciado interno del contenedor */
+        }
+
         .download-button {
             display: inline-block;
             padding: 10px 20px;
@@ -155,7 +178,7 @@
 
         #projects {
             display: flex; 
-            flex-direction: column; 
+            flex-direction: column;
             justify-content: center; 
             align-items: center; 
             text-align: left; 
@@ -195,7 +218,7 @@
             font-size: 16px;
         }
 
-        .error-message {
+        /*.error-message {
             display: none;
             text-align: center;
             margin-bottom: 20px;
@@ -204,6 +227,22 @@
         .error-line {
             font-size: 22px;
             color: #00ff00;
+        }*/
+
+        .projects-images-container {
+            display: none; /* Alinea los elementos en fila */
+            flex-wrap: wrap;
+            justify-content: center; /* Centra las imágenes horizontalmente */
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            gap: 50px;
+        }
+
+        .projects-images-container img {
+            width: 25%; 
+            height: auto; 
+            transition: transform 0.5s, filter 0.5s;
         }
 
         #projects-content {
@@ -232,6 +271,18 @@
             width: 50px; 
             height: auto; 
             /*transition: transform 0.3s, filter 0.3s;*/
+        }
+
+        .footer-images-container .hover-image {
+            display: none;
+        }
+
+        .footer-images-container:hover .default-image {
+            display: none;
+        }
+
+        .footer-images-container:hover .hover-image {
+            display: inline;
         }
 
         /* CSS responsivo */
@@ -283,8 +334,13 @@
             height: auto; 
         }
 
+        .projects-images-container img {
+            width: 35%;
+            height: auto;
+        }
+
         .footer-images-container img {
-        width: 40px; /* Tamaño para tablets */
+            width: 40px; /* Tamaño para tablets */
         }
     }
 
@@ -336,8 +392,13 @@
             height: auto; 
         }
 
+        .projects-images-container img {
+            width: 35%;
+            height: auto;
+        }
+
         .footer-images-container img {
-        width: 40px;
+            width: 40px;
         }
     }
     </style>
@@ -368,18 +429,18 @@
         <section id="presentation">
             <h1 id="presentation_title">HI! I AM <span class="highlight_orange">ADRIÁN RODRÍGUEZ</span><br> SYSTEMS AND NETWORKS ADMINISTRATOR</h1>
             <div class="image-row">
-                <img src="imagenes\python_logo1.png" alt="Imagen 1">
-                <img src="imagenes\sql_logo1.png" alt="Imagen 2">
-                <img src="imagenes\HTML5_logo1.png" alt="Imagen 3">
-                <img src="imagenes\CSS3_logo1.png" alt="Imagen 4">
-                <img src="imagenes\JavaScript_logo1.png" alt="Imagen 5">
+                <img src="imagenes y cv\python_logo1.png" alt="Imagen 1">
+                <img src="imagenes y cv\sql_logo1.png" alt="Imagen 2">
+                <img src="imagenes y cv\HTML5_logo1.png" alt="Imagen 3">
+                <img src="imagenes y cv\CSS3_logo1.png" alt="Imagen 4">
+                <img src="imagenes y cv\JavaScript_logo1.png" alt="Imagen 5">
             </div>
             <div class="image-row">
-                <img src="imagenes/Nmap_logo1.png" alt="Imagen 6">
-                <img src="imagenes/Wireshark_Logo1.png" alt="Imagen 7">
-                <img src="imagenes/cisco_logo.png" alt="Imagen 8">
-                <img src="imagenes/linux_logo.png" alt="Imagen 9">
-                <img src="imagenes/Ubuntu_logo.png" alt="Imagen 10">
+                <img src="imagenes y cv\Nmap_logo1.png" alt="Imagen 6">
+                <img src="imagenes y cv\Wireshark_Logo1.png" alt="Imagen 7">
+                <img src="imagenes y cv\cisco_logo.png" alt="Imagen 8">
+                <img src="imagenes y cv\linux_logo.png" alt="Imagen 9">
+                <img src="imagenes y cv\Ubuntu_logo.png" alt="Imagen 10">
             </div>
 
         </section>
@@ -387,26 +448,51 @@
 
         <!-- Seccion experiencia-->
         <section id="experience">
-             <h2 id="experience_h2" style="font-size: 35px;"><span class="highlight_orange">1 year in IT positions but much more than that</span></h2>
-             <p id="experience_text" style="font-size: 24px;">Around <span class="highlight_orange">a year of experience</span> working in IT positions, some of them were small companies with dinamic roles demanding me more than only the IT part. The positions were:</p>
+             <h2 id="experience_h2" style="font-size: 35px;"><span class="highlight_orange">Two years in IT positions but much more than that</span></h2>
+             <p id="experience_text" style="font-size: 24px;"><span class="highlight_orange">Two years of experience</span> working in IT positions, some of them were small companies with dinamic roles demanding me more than only the IT part. The positions were:</p>
                  <article>
-                     <h4 id="job1" style="font-size: 24px;"><span class="highlight_orange">Web Technician in EnvíoMédical</span> (7 months).</h4>
-                     <p id="job1_description" style="font-size: 22px;">-Worked as FullStack Developer combined with other tasks.</p>
+                     <h4 id="job1" style="font-size: 24px;"><span class="highlight_orange">Web Technician in EnvíoMédical</span> (11 months).</h4>
+                        <p class="toggle-info" data-target="job1_description" onclick="toggleContent(this)" style="font-size: 22px;"> (Show experience...) </p>
+                            <div class="content" id="job1_description" style="font-size: 22px;">
+                                They hired me as Front-end Developer, it was a small bussines that was growing a lot due to the COVID-19 pandemic, I entered to make team with another Junior Developer and later we made a team of 3, we started modifying the front-end of their webpage but we ended doing the work of a FullStack Developer, from modifying the front and back end to manage a little bit their client's database.
+                                <br><br>
+                                Also add that after a few months they wanted to invest on marketing and offered us to do that function too, they hired an experienced digital marketing expert that show us how to run Facebook ads campaign's, Google Market and LinkedIn Insighttag, I also learned a lot about graphic design making myself a little expert on Adobe Photoshop.
+                            </div>
                  </article>
                  <article>
-                     <h4 id="job2" style="font-size: 24px;"><span class="highlight_orange">Support Technician in Inelcom</span> (3 months).</h4>
-                     <p id="job2_description" style="font-size: 22px;">-Support Technician working with Cisco Packet Tracer.</p>
+                    <h4 id="job2" style="font-size: 24px;"><span class="highlight_orange">Front end Developer in A Quinta da Auga</span> (6 months).</h4>
+                        <p class="toggle-info" data-target="job2_description" onclick="toggleContent(this)" style="font-size: 22px;"> (Show experience...) </p>
+                            <p class="content" id="job2_description" style="font-size: 22px;">
+                                Hired me as part of an IT team focused in renew their webpage and represent the new corporative image that they want to show to their guest.
+                                <br><br>
+                                I implemented by myself a small web application that they need for a specific travel agency that allow the costumers register their information and that information be managed by the Front Desk of the hotel.
+                                <br><br>
+                                You can see a raw example in my GitHub that I will upload in the future to my web page too.
+                            </p>
                  </article>
                  <article>
-                     <h4 id="job3" style="font-size: 24px;"><span class="highlight_orange">DataBase Developer in NovaMetal</span> (3 months).</h4>
-                     <p id="job3_description" style="font-size: 22px;">-I helped to create a database about the suppliers, clients and workers for NovaMetal a metallurgy bussines.</p>
+                     <h4 id="job3" style="font-size: 24px;"><span class="highlight_orange">Support Technician in Inelcom</span> (3 months).</h4>
+                        <p class="toggle-info" data-target="job3_description" onclick="toggleContent(this)" style="font-size: 22px;"> (Show experience...) </p>
+                            <p class="content" id="job3_description" style="font-size: 22px;">
+                                Support Technician working with Cisco Packet Tracer.
+                            </p>
+                 </article>
+                 <article>
+                     <h4 id="job4" style="font-size: 24px;"><span class="highlight_orange">DataBase Developer in NovaMetal</span> (3 months).</h4>
+                        <p class="toggle-info" data-target="job4_description" onclick="toggleContent(this)" style="font-size: 22px;"> (Show experience...) </p>
+                            <p class="content" id="job4_description" style="font-size: 22px;">
+                                Implemented a database to manage suppliers, clients, and workforce information as a Freelance.
+                            </p>
                  </article>
             <p id="experience_text2" style="font-size: 21px;">
-            In addition I would like to count the experience that my <span class="highlight_orange">IT formation gave me like Systems and Network Administrator Technician</span>, and all the time dedicated to learn by myself. That way we can say that <span class="highlight_orange">is more than only one year</span>!.
+            In addition I would like to count the experience that my <span class="highlight_orange">IT formation gave me like Systems and Network Administrator Technician</span>, and all the time dedicated to learn by myself.
             <br>
             If you want to know more about my work experience download my resumé here:
             <br></p>
-            <a href="ruta/al/curriculum.pdf" id="download_button" download="Adrián Rodríguez Cv.pdf" class="download-button">Resumé</a>
+            <div class="button-container">
+                    <a href="\imagenes y cv\Adrián_Rodríguez_Paulos_Resume.pdf" id="download_button" download="Adrián Rodríguez Resumé.pdf" class="download-button">English</a>
+                    <a href="\imagenes y cv\CV.pdf" id="download_button" download="Adrián Rodríguez Cv.pdf" class="download-button">Español</a>
+            </div>
  
          </section>
          <!-- Seccion experiencia-->
@@ -421,26 +507,24 @@
                         <div class="loading-fill"></div>
                     </div>
                     <div class="loading-percent" style="font-size: 22px;">0%</div>
-                    <div class="error-message">
+                    <!--<div class="error-message">
                         <div class="error-line" id="line1"></div>
                         <div class="error-line" id="line2"></div>
-                        <!-- <div class="error-line" id="line3"></div> -->
-                    </div>
+                        <div class="error-line" id="line3"></div>
+                    </div>-->
                 </div>
             </div>
-            <div id="projects-content" style="display: none;">
+            <div id="projects-content" class="projects-images-container" style="display: none;">
+                <a href="https://github.com/NoNameNPC-1/Online-encyclopedia" class="image-container" target="_blank">
+                    <img src="imagenes y cv/archivo enciclopedia 1.png" alt="Imagen enciclopedia" id="project-image">
+                </a>
+                <p style="font-size: 22px;"> More projects on my Github </p>
+            </div>
+            <!--<div id="projects-content" style="display: none;">
                 <article>
                     <h3 id="Soon_message" style="font-size: 24px;"><span class="highlight_orange">Soon...</span> I am working on it</h3>
                     <p id="Soon_description" style="font-size: 24px;">For the moment you can <span class="highlight_orange">take a look to my portfolio</span> that is one of my projects too. Feel free to <span class="highlight_orange">explore the files in my GitHub repository</span>!</p>
-                </article>
-                <!-- <article>
-                    <h3 id="project1-title">Project 1</h3>
-                    <p id="project1-description">Nothing for the moment</p>
-                </article>
-                <article>
-                    <h3 id="project2-title">Project 2</h3>
-                    <p id="project2-description">Soon.</p>
-                </article> -->
+                </article>-->
             </div>
         </section>
         <!-- Seccion proyectos-->
@@ -448,14 +532,14 @@
         <footer>
             <!-- imagenes estaticas interactivas -->
             <div class="footer-images-container">
-                    <a href="https://www.linkedin.com/in/adrian-rodriguez-107aa4209/" target="_blank">
-                        <img src="imagenes/linkedin_logoverde.png" alt="Linkedin">
+                    <a href="https://www.linkedin.com/in/adri%C3%A1n-rodr%C3%ADguez-107aa4209/" target="_blank">
+                        <img src="imagenes y cv\linkedin_logoverde.png" alt="Linkedin">
                     </a>
                     <a href="https://github.com/NoNameNPC-1" target="_blank">
-                        <img src="imagenes/github_logoverde.png" alt="GitHub">
+                        <img src="imagenes y cv\github_logoverde.png" alt="GitHub">
                     </a>
                     <a href="mailto:adri90s.d.c@gmail.com" target="_blank">
-                            <img src="imagenes/gmail_logoverde.png" alt="Gmail">
+                            <img src="imagenes y cv\gmail_logoverde.png" alt="Gmail">
                     </a>
             </div>
              <!-- imagenes estaticas interactivas -->
@@ -468,44 +552,48 @@
         // JavaScript
         const translations = {
             en: {
-        menuPresentation: "Presentation",
-        menuExperience: "Experience",
-        menuProjects: "Projects",
-        presentationTitle: "HI! I AM <span class='highlight_orange'>ADRIÁN RODRÍGUEZ</span> <br> SYSTEMS AND NETWORKS ADMINISTRATOR",
-        experienceH2: "<span class='highlight_orange'>1 year in IT positions but much more than that</span>",
-        experienceText: 'Around<span class="highlight_orange"> a year of experience</span> working in IT positions, some of them were small companies with dinamic roles demanding me more than only the IT part. The positions were:',
-        job1: "<span class='highlight_orange'>Web Technician in EnvíoMédical</span> (7 months).",
-        job1Description: "-Worked as a FullStack Developer combined with other tasks.",
-        job2: "<span class='highlight_orange'>Support Technician in Inelcom</span> (3 months).",
-        job2Description: "-Support Technician working with Cisco Packet Tracer.",
-        job3: "<span class='highlight_orange'>Database Developer in NovaMetal</span> (3 months).",
-        job3Description: "-I helped create a database about the suppliers, clients, and workers for NovaMetal, a metallurgy business.",
-        experienceText2: "Additionally, I would like to count the experience that my <span class='highlight_orange'>IT training as a Systems and Network Administrator Technician</span> gave me, as well as all the time dedicated to self-learning. That way, <span class='highlight_orange'>it's more than just one year</span>!.<br>If you want to know more about my work experience, download my resumé here:",
-        downloadButton: "Resumé",
-        projectsTitle:'<span class="highlight_orange">My Projects</span>',
-        soonMessage: "<span class='highlight_orange'>Soon...</span> I am working on it.",
-        soonDescription: 'For the moment you can <span class="highlight_orange">take a look to my portfolio</span> that is one of my projects too. Feel free to <span class="highlight_orange">explore the files in my GitHub repository</span>!',
-    },
-    es: {
-        menuPresentation: "Presentación",
-        menuExperience: "Experiencia",
-        menuProjects: "Proyectos",
-        presentationTitle: "¡Hola! Soy <span class='highlight_orange'>ADRIÁN RODRÍGUEZ</span> Administrador<br> de Sistemas informáticos y redes",
-        experienceH2: "<span class='highlight_orange'>1 año en posiciones de Informático pero mucho más que eso</span>",
-        experienceText: "Cerca de <span class='highlight_orange'>un año de experiencia</span> trabajando en algunas pequeñas empresas con roles dinámicos que requerían más que solo tareas de Informática. Las posiciones fueron:",
-        job1: "<span class='highlight_orange'>Técnico Web en EnvíoMédical</span> (7 meses).",
-        job1Description: "-Trabajé como desarrollador FullStack combinado con otras tareas de administración y marketing.",
-        job2: "<span class='highlight_orange'>Técnico de Soporte en Inelcom</span> (3 meses).",
-        job2Description: "-Técnico de soporte trabajando con Cisco Packet Tracer.",
-        job3: "<span class='highlight_orange'>Desarrollador de Base de Datos en NovaMetal</span> (3 meses).",
-        job3Description: "-Ayudé a crear una base de datos sobre los proveedores, clientes y trabajadores en NovaMetal, una empresa de metalurgia.",
-        experienceText2: "Además, me gustaría contar la experiencia que mi <span class='highlight_orange'>formación como Técnico en Administración de Sistemas informáticos y redes</span> me brindó, así como todo el tiempo dedicado al autoaprendizaje. De esta forma puedo decir que,<br> ¡<span class='highlight_orange'>es más que solo un año</span>!.<br>Si deseas saber más sobre mi experiencia laboral, descarga mi currículum aquí:",
-        downloadButton: "Currículum",
-        projectsTitle: '<span class="highlight_orange">Mis proyectos</span>',
-        soonMessage: "<span class='highlight_orange'>Pronto tendre cosas que mostrar...</span> el trabajo no para.",
-        soonDescription: "Por ahora, puedes <span class='highlight_orange'>revisar mi portafolio web</span>, que es uno de mis proyectos también. Te invito a <span class='highlight_orange'>explorar los archivos en mi repositorio de GitHub</span>.",
-    },
-};
+                menuPresentation: "Presentation",
+                menuExperience: "Experience",
+                menuProjects: "Projects",
+                presentationTitle: "HI! I AM <span class='highlight_orange'>ADRIÁN RODRÍGUEZ</span> <br> SYSTEMS AND NETWORKS ADMINISTRATOR",
+                experienceH2: "<span class='highlight_orange'>Two years in IT positions but much more than that</span>",
+                experienceText: '<span class="highlight_orange">Two years of experience</span> working in IT positions, some of them were small companies with dinamic roles demanding me more than only the IT part. The positions were:',
+                job1: "<span class='highlight_orange'>Web Technician in EnvíoMédical</span> (11 months).",
+                job1Description: "They hired me as Front-end Developer, it was a small bussines that was growing a lot due to the COVID-19 pandemic, I entered to make team with another Junior Developer and later we made a team of 3, we started modifying the front-end of their webpage but we ended doing the work of a FullStack Developer, from modifying the front and back end to manage a little bit their client's database.<br><br>Also add that after a few months they wanted to invest on marketing and offered us to do that function too, they hired an experienced digital marketing expert that show us how to run Facebook ads campaign's, Google Market and LinkedIn Insighttag, I also learned a lot about graphic design making myself a little expert on Adobe Photoshop.",
+                job2: "<span class='highlight_orange'>Front end Developer in A Quinta da Auga</span> (6 months).",
+                job2Description: "Hired me as part of an IT team focused in renew their webpage and represent the new corporative image that they want to show to their guest.<br><br>I implemented by myself a small web application that they need for a specific travel agency that allow the costumers register their information and that information be managed by the Front Desk of the hotel.<br><br>You can see a raw example in my GitHub that I will upload in the future to my web page too.",
+                job3: "<span class='highlight_orange'>Support Technician in Inelcom</span> (3 months).",
+                job3Description: "Support Technician working with Cisco Packet Tracer.",
+                job4: "<span class='highlight_orange'>Database Developer in NovaMetal</span> (3 months).",
+                job4Description: 'Implemented a database to manage suppliers, clients, and workforce information as a Freelance.',
+                experienceText2: 'In addition I would like to count the experience that my <span class="highlight_orange">IT formation gave me like Systems and Network Administrator Technician</span>, and all the time dedicated to learn by myself.<br>If you want to know more about my work experience download my resumé here:',
+                //downloadButton: "Resumé",
+                projectsTitle:'<span class="highlight_orange">My Projects</span>',
+                //soonMessage: "<span class='highlight_orange'>Soon...</span> I am working on it.",
+                //soonDescription: 'For the moment you can <span class="highlight_orange">take a look to my portfolio</span> that is one of my projects too. Feel free to <span class="highlight_orange">explore the files in my GitHub repository</span>!',
+            },
+            es: {
+                menuPresentation: "Presentación",
+                menuExperience: "Experiencia",
+                menuProjects: "Proyectos",
+                presentationTitle: "¡Hola! Soy <span class='highlight_orange'>ADRIÁN RODRÍGUEZ</span> Administrador<br> de Sistemas informáticos y redes",
+                experienceH2: "<span class='highlight_orange'>2 años en posiciones de Informático pero mucho más que eso</span>",
+                experienceText: "<span class='highlight_orange'>2 años de experiencia</span> trabajando en algunas pequeñas empresas con roles dinámicos que requerían más que solo tareas de Informática. Las posiciones fueron:",
+                job1: "<span class='highlight_orange'>Técnico Web en EnvíoMédical</span> (11 meses).",
+                job1Description: "Trabajé como desarrollador FullStack combinado con otras tareas de administración y marketing.",
+                job2: "<span class='highlight_orange'>Desarrollador Front End A Quinta da Auga</span> (6 meses).",
+                job2Description: "Trabajé como desarrollador Front End.",
+                job3: "<span class='highlight_orange'>Técnico de Soporte en Inelcom</span> (3 meses).",
+                job3Description: "Técnico de soporte trabajando con Cisco Packet Tracer.",
+                job4: "<span class='highlight_orange'>Desarrollador de Base de Datos en NovaMetal</span> (3 meses).",
+                job4Description: "Ayudé a crear una base de datos sobre los proveedores, clientes y trabajadores en NovaMetal, una empresa de metalurgia.",
+                experienceText2: "Además, me gustaría contar la experiencia que mi <span class='highlight_orange'>formación como Técnico en Administración de Sistemas informáticos y redes</span> me brindó, así como todo el tiempo dedicado al autoaprendizaje. De esta forma puedo decir que,<br> ¡<span class='highlight_orange'>es más que solo un año</span>!.<br>Si deseas saber más sobre mi experiencia laboral, descarga mi currículum aquí:",
+                //downloadButton: "Currículum",
+                projectsTitle: '<span class="highlight_orange">Mis proyectos</span>',
+                //soonMessage: "<span class='highlight_orange'>Pronto tendre cosas que mostrar...</span> el trabajo no para.",
+                //soonDescription: "Por ahora, puedes <span class='highlight_orange'>revisar mi portafolio web</span>, que es uno de mis proyectos también. Te invito a <span class='highlight_orange'>explorar los archivos en mi repositorio de GitHub</span>.",
+            },
+        };
 
 
         const langEn = document.getElementById("lang-en");
@@ -529,11 +617,13 @@
             document.getElementById("job2_description").innerHTML = content.job2Description;
             document.getElementById("job3").innerHTML = content.job3;
             document.getElementById("job3_description").innerHTML = content.job3Description;
+            document.getElementById("job4").innerHTML = content.job4;
+            document.getElementById("job4_description").innerHTML = content.job4Description;
             document.getElementById("experience_text2").innerHTML = content.experienceText2;
-            document.getElementById("download_button").innerHTML = content.downloadButton;
+            //document.getElementById("download_button").innerHTML = content.downloadButton;
             document.getElementById("projects_title").innerHTML = content.projectsTitle;
-            document.getElementById("Soon_message").innerHTML = content.soonMessage;
-            document.getElementById("Soon_description").innerHTML = content.soonDescription;
+            //document.getElementById("Soon_message").innerHTML = content.soonMessage;
+            //document.getElementById("Soon_description").innerHTML = content.soonDescription;
             //document.getElementById("project2_title").innerHTML = content.project2Title;
             //document.getElementById("project2_description").innerHTML = content.project2Description;
 
@@ -614,56 +704,76 @@
             });
         });
 
+        // Función para mostrar/ocultar el contenido adicional
+        function toggleContent(element) {
+      const targetId = element.getAttribute("data-target");
+      const content = document.getElementById(targetId);
+      const isVisible = content.style.display === "block";
+
+      // Alternar visibilidad
+      content.style.display = isVisible ? "none" : "block";
+
+      // Cambiar texto
+      element.textContent = isVisible 
+        ? "(Show experience...)" 
+        : "(Hide experience)";
+    }
+
         // Inicializar sección activa
         updateActiveSection(0);
 
         //Funcion para la animacion de la seccion Projects
         let projectsLoaded = false;
 
-    function showLoadingAnimation() {
-        const loadingAnimation = document.getElementById("loading-animation");
-        const projectsContent = document.getElementById("projects-content");
-        const loadingFill = document.querySelector('.loading-fill');
-        const loadingPercent = document.querySelector('.loading-percent');
-        const loadingText = document.querySelector('.loading-text');
-        const loadingBar = document.querySelector('.loading-bar');
-        const errorMessage = document.querySelector('.error-message');
-        const line1 = document.getElementById('line1');
-        const line2 = document.getElementById('line2');
-        //const line3 = document.getElementById('line3');
-        const errorText1 = "Error 404";
-        const errorText2 = "Page not Found";
-        //const errorText3 = "Soon I will upload some projects here, but right now you are watching one of them, so I invite you to enter to my GitHub repository and take a look to the files of my portfolio!";
+        function showLoadingAnimation() {
+            const loadingAnimation = document.getElementById("loading-animation");
+            const projectsContent = document.getElementById("projects-content");
+            const loadingFill = document.querySelector('.loading-fill');
+            const loadingPercent = document.querySelector('.loading-percent');
+            const loadingText = document.querySelector('.loading-text');
+            const loadingBar = document.querySelector('.loading-bar');
+            //const errorMessage = document.querySelector('.error-message');
+            //const line1 = document.getElementById('line1');
+            //const line2 = document.getElementById('line2');
+            //const line3 = document.getElementById('line3');
+            //const errorText1 = "Error 404";
+            //const errorText2 = "Page not Found";
+            //const errorText3 = "Soon I will upload some projects here, but right now you are watching one of them, so I invite you to enter to my GitHub repository and take a look to the files of my portfolio!";
 
-        loadingAnimation.style.display = "block";
-        projectsContent.style.display = "none";
-        errorMessage.style.display = "none";
+            loadingAnimation.style.display = "block";
+            projectsContent.style.display = "none";
+            //errorMessage.style.display = "none";
 
-        let percent = 0;
-        let charIndex = 0;
+            let percent = 0;
+            let charIndex = 0;
 
         function updateLoader() {
             percent += 1;
             loadingFill.style.width = percent + '%';
             loadingPercent.textContent = percent + '%';
 
-            if (percent < 99.5) {
+            if (percent < 100) {
                 setTimeout(updateLoader, 30);
             } else {
-                loadingPercent.textContent = "99.5%";
+                //loadingPercent.textContent = "99.5%";
                 loadingText.style.display = "none";
                 loadingBar.style.display = "none";
                 loadingPercent.style.display = "none";
-                errorMessage.style.display = "block";
-                typeText(line1, errorText1, () => {
-                    typeText(line2, errorText2, () => {
+                setTimeout(() => {
+                    loadingAnimation.style.display = "none";
+                    projectsContent.style.display = "flex";
+
+                }, 500);
+                //errorMessage.style.display = "block";
+                //typeText(line1, errorText1, () => {
+                    //typeText(line2, errorText2, () => {
                         //typeText(line3, errorText3, () => {
                             // Mostrar contenido después de la animación
                             //loadingAnimation.style.display = "none";
-                            projectsContent.style.display = "block";
+                            //projectsContent.style.display = "block";
                         //});
-                    });
-                });
+                   // });
+               // });
             }
         }
 
@@ -684,26 +794,41 @@
         }
 
         updateLoader();
-    }
-
-    // Detectar cuando se visualiza la sección `projects`
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting && !projectsLoaded) {
-                    projectsLoaded = true;
-                    showLoadingAnimation();
-                }
-            });
-        },
-        {
-            root: null, // Viewport del navegador
-            rootMargin: "0px", // Sin margen adicional
-            threshold: 0.5, // El 50% de la sección debe estar visible
         }
-    );
 
-    observer.observe(document.getElementById("projects"));
+        //imagen proyectos interactiva
+        document.addEventListener("DOMContentLoaded", function() {
+                const image = document.getElementById("project-image");
+                const defaultSrc = "imagenes y cv/archivo enciclopedia 1.png";
+                const hoverSrc = "imagenes y cv/archivo enciclopedia 2.png";
+
+                image.addEventListener("mouseover", function() {
+                    image.src = hoverSrc;
+                });
+
+                image.addEventListener("mouseout", function() {
+                    image.src = defaultSrc;
+                });
+            });
+
+        // Detectar cuando se visualiza la sección `projects`
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !projectsLoaded) {
+                        projectsLoaded = true;
+                        showLoadingAnimation();
+                    }
+                });
+            },
+            {
+                root: null, // Viewport del navegador
+                rootMargin: "0px", // Sin margen adicional
+                threshold: 0.5, // El 50% de la sección debe estar visible
+            }
+        );
+
+        observer.observe(document.getElementById("projects"));
     </script>
 </body>
 </html>
